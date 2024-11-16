@@ -1,15 +1,10 @@
 -- Type: account_type
 
--- DROP TYPE IF EXISTS public.account_type;
-
-CREATE TYPE public.account_type AS ENUM
-    ('Client','Employee', 'Admin');
-
-ALTER TYPE public.account_type
-    OWNER TO cse340ak;
-
-ALTER TYPE public.account_type
-    ADD VALUE 'Client' AFTER 'Admin';
+DROP TYPE IF EXISTS public.account_type;
+CREATE TYPE public.account_type AS ENUM(
+  'Client',
+  'Employee', 
+  'Admin');
 
 
 -- Table struture for table 'classification'
@@ -254,3 +249,18 @@ VALUES   (
     'White',
     5
   );
+
+
+-- change a huge interior to small interiors for the GM hummer record in the inv_description column.
+UPDATE public.inventory
+SET inv_description = REPLACE(inv_description, 'a huge interior','small interiors')
+WHERE inv_id = 10 ;
+
+
+/* Update all records in the inventory table to add "/vehicles" to the middle of the file path in 
+the inv_image and inv_thumbnail columns using a single query */
+UPDATE
+  public.inventory
+SET
+  inv_image = REPLACE(inv_image, '/images/vehicles/', '/images/vehicles'),
+  inv_thumbnail = REPLACE(inv_thumbnail, '/images/vehicles/', '/images/vehicles');
