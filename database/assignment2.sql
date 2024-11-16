@@ -33,5 +33,5 @@ the inv_image and inv_thumbnail columns using a single query */
 UPDATE
   public.inventory
 SET
-  inv_image = REPLACE(inv_image, '/images/vehicles/', '/images/vehicles'),
-  inv_thumbnail = REPLACE(inv_thumbnail, '/images/vehicles/', '/images/vehicles');
+  inv_image = REPLACE(inv_image, '/images', '/images/vehicles'),
+  inv_thumbnail = REPLACE(inv_thumbnail, '/images', '/images/vehicles');
