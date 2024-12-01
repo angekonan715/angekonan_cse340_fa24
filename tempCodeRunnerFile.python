@@ -1,0 +1,9 @@
+import pandas as pd
+import altair as alt
+import numpy as np
+from scipy import stats
+
+flights_url = "https://github.com/byuidatascience/data4python4ds/raw/master/data-raw/flights/flights.csv"
+
+flights = pd.read_csv(flights_url)
+flights['time_hour'] = pd.to_datetime(flights.time_hour, format = "%Y-%m-%d %H:%M:%S")
