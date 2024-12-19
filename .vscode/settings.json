@@ -10,7 +10,7 @@
             "server": "localhost",
             "driver": "PostgreSQL",
             "name": "dbcse340render.com",
-            "connectString": "postgresql://cse340db2_aka:ZTAiICiOwo792kFnNuguOnTobi6Zg7Tl@dpg-csshrh1u0jms73ebd6b0-a.oregon-postgres.render.com/cse340db2_aka"
+            "connectString": "postgresql://cse340_db:kriXAi4CNl7uet5PZMZCly7gs7pxCY5m@dpg-cti4dorqf0us73dri1q0-a.oregon-postgres.render.com/cse340_db_7f7m"
         }
     ],
     "cSpell.words": [
