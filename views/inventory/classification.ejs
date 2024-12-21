@@ -1,12 +1,17 @@
-<!-- Conteny heading -->
 <% if (title) { %>
     <h1>
         <%= title %>
     </h1>
     <% } else { res.redirect('/') } %>
-        <!-- A message -->
-
         <%# messages() %>
 
-            <!-- The Inventory Items Display -->
-            <%- grid %>
+            <% if (message) { %>
+                <div class="invManagementLinks">
+
+                    <h2><%- message %></h2>
+                    <a href="/inv/addInventory">Add New Inventory</a>
+                </div>
+
+                <% } else { %>
+                    <%- grid %>
+                        <% } %>

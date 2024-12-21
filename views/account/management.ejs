@@ -1,0 +1,65 @@
+<% if(title) {%>
+    <h1>
+        <%= title %>
+    </h1>
+    <%} %> <%- messages() %>
+
+            <% if (errors) { %>
+                <ul class="notice-fail">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
+
+                    <% console.log(accountData) %>
+
+                        <!-- Welcome Message -->
+                        <h2>Welcome, <%= accountData.account_firstname %>
+                        </h2>
+
+                        <!-- Update Account Section (Shown to All Users) -->
+                        <p>
+                            <a href="/account/updateAccount/<%= accountData.account_id %>">Update Account
+                                Information</a>
+                        </p>
+
+                        <!-- Inventory Management Section (Admins and Employees Only) -->
+                        <% if (accountData.account_type==="Admin" || accountData.account_type==="Employee" ) { %>
+                            <h3>Inventory Management</h3>
+                            <p>
+                                <a href="/inv/">Manage Inventory</a>
+                            </p>
+                            <% } %>
+
+                                <h2>Reviews</h2>
+                                <div>
+                                    <% if (accountReviews.length> 0) { %>
+                                        <% accountReviews.forEach((review)=> { %>
+                                            <div class="accountReviews">
+                                                <p>
+                                                    <%= review.inv_make %>
+                                                        <%= review.inv_model %>
+                                                </p>
+                                                <p>
+                                                    <%= review.review_content %>
+                                                </p>
+                                                <p>
+                                                    <%= review.review_timestamp %>
+                                                </p>
+                                                <div class="reviewEditandDelete">
+                                                    <a class="reviewActionIcon" title="Edit Review"
+                                                        href="/review/editReview/<%= review.review_id%>"><i
+                                                            class="fa-solid fa-pen"></i></a>
+                                                    <a class="reviewActionIcon" title="Delete Review"
+                                                        href="/review/deleteReview/<%= review.review_id %>"><i
+                                                            class="fa-solid fa-trash-can"></i></a>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                                <% } else { %>
+                                                    <p>this account hasn't reviews any cars yet</p>
+                                                    <% } %>
+                                </div>

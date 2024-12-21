@@ -1,0 +1,15 @@
+{
+    "watch": [
+      "public/css/*.css",
+      "views/*.ejs",
+      "routes/*.js",
+      "controllers/*.js",
+      "models/*.js",
+      "utilities/*.js"
+    ],
+    "ext": "css,js,ejs,json",
+    "exec": "node server.js",
+    "events": {
+      "restart": "echo 'CSS file changed, restarting server...'"
+    }
+  }

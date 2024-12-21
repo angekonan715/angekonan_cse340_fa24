@@ -1,0 +1,57 @@
+<% if(title){ %>
+    <h1>
+        <%= title %>
+    </h1>
+    <%} %> <%- messages() %>
+
+            <% if (errors) { %>
+                <ul class="notice-fail">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
+
+                    <form action="/account/register" method="post" id="registerForm">
+                        <h2>CSE Motors Sign-Up</h2>
+                        <label for="firstname">First Name</label>
+                        <input type="text" name="account_firstname" id="firstname" required
+                            value="<%= locals.account_firstname %>" />
+                        <label for="lastname">Last Name</label>
+                        <input type="text" name="account_lastname" id="lastname" required
+                            value="<%= locals.account_lastname %>" />
+                        <label for="emailAddress">Email Address</label>
+                        <input type="email" name="account_email" id="emailAddress" required
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                            value="<%= locals.account_email %>" />
+                        <label for="password">Password</label>
+                        <div class="password-container">
+                            <input type="password" name="account_password" id="password" required
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" . />
+                            <span><i class="fa-solid fa-eye"></i>
+                                <!-- <i class="fa-solid fa-eye-slash"></i> -->
+                            </span>
+                        </div>
+                        <p>
+                            Password must be at least 12 characters, contain at least 1 uppercase
+                            letter, 1 lowercase letter, 1 number and 1 special character
+                        </p>
+                        <input type="submit" value="Register" />
+                    </form>
+
+                    <script>
+
+                        const showPasswordbtn = document.querySelector(".password-container span > i");
+                        const passwordInput = document.querySelector("#password");
+                        showPasswordbtn.addEventListener("click", () => {
+                            if (passwordInput.type === "password") {
+                                passwordInput.type = "text";
+                                showPasswordbtn.classList.add("fa-eye-slash");
+                            } else {
+                                passwordInput.type = "password";
+                                showPasswordbtn.classList.remove("fa-eye-slash");
+                            }
+                        }); 
+                    </script>

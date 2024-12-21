@@ -1,0 +1,40 @@
+<% if(title){ %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
+        <%- messages() %>
+
+
+            <% if (errors) { %>
+                <ul class="notice-fail">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
+
+                    <form action="/inv/delete/<%= locals.inv_id %>" method="post" id="addInventoryForm"
+                        class="edit-mode">
+                        <!-- <h2>Deletevehicle</h2> -->
+                        <label for="classification_id"></label>
+                        <%#- select %>
+                            <label for="inv_make">Make</label>
+                            <input type="text" name="inv_make" id="inv_make" required readonly
+                                value="<%= locals.inv_make %>" />
+                            <label for="inv_model">Model</label>
+                            <input type="text" name="inv_model" id="inv_model" required readonly
+                                value="<%= locals.inv_model %>" />
+                            <label for="inv_year">Year</label>
+                            <input type="number" name="inv_year" id="inv_year" required readonly pattern="^[0-9]{4}$"
+                                value="<%= locals.inv_year %>" />
+
+                            <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+                                <% } %>>
+                                    <p>Confirm Deletion - The delete is permanent</p>
+                                    <input type="submit" value="Delete vehicle" />
+                    </form>
+
+                    <!-- <script src="/js/inv-update.js"></script> -->
